@@ -21,3 +21,23 @@ def horizontal_check(board):
                 if board[i][j] == board[i][m] and j != m and board[i][j] != '*' and board[i][j] != ' ':
                     return False
     return True
+
+
+def vertical_check(board):
+    '''
+    Checks whether there are no repetitions of numbers in the columns of the table
+
+    >>> vertical_check(["**** ****", "***1 ****", "**  3****", "* 4 1****", "     9 5 ", " 6  83  *", "3   1  **", "  8  2***", "  2  ****"])
+    False
+    >>> vertical_check(["**** ****", "***1 ****", "**  3****", "* 4 1****", "     9 5 ", " 6  83  *", "  2  ****", "  8  2***", "  2  ****"])
+    False
+    >>> vertical_check(["**** ****", "***1 ****", "**  3****", "* 4 1****", "     9 5 ", " 6  83  *", "3      **", "  8  2***", "  2  ****"])
+    True
+    '''
+
+    for i in range(9):
+        for j in range(9):
+            for m in range(9):
+                if board[j][i] == board[m][i] and j != m and board[j][i] != '*' and board[j][i] != ' ':
+                    return False
+    return True
