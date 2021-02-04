@@ -70,3 +70,23 @@ def all_in_row(board):
         helping_counter += 1
 
     return res
+
+
+def corner_check(board):
+    '''
+    Checks whether there are no repetitions of numbers in the corners of the table
+
+    >>> corner_check(["**** ****", "***1 ****", "**  3****", "* 4 1****", "     9 5 ", " 6  83  *", "3   1  **", "  8  2***", "  2  ****"])
+    True
+    >>> corner_check(["**** ****", "***1 ****", "**  3****", "* 4 1****", "     9 5 ", " 6  83  *", "3   1  **", "2 8  2***", "  2  ****"])
+    False
+    '''
+
+    rows = all_in_row(board)
+    for i in range(5):
+        rows[i] = rows[i].replace('*', '')
+        for m in range(9):
+            for n in range(9):
+                if rows[i][m] == rows[i][n] and m != n and rows[i][m] != ' ':
+                    return False
+    return True
