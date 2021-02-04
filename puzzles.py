@@ -90,3 +90,16 @@ def corner_check(board):
                 if rows[i][m] == rows[i][n] and m != n and rows[i][m] != ' ':
                     return False
     return True
+
+
+def validate_board(board):
+    '''
+    Checks whether the playing field of the logic puzzle is ready to start the game
+
+    >>> validate_board(["**** ****", "***1 ****", "**  3****", "* 4 1****", "     9 5 ", " 6  83  *", "3   1  **", "  8  2***", "  2  ****"])
+    False
+    >>> validate_board(["**** ****", "***1 ****", "**  3****", "* 4 1****", "     9 5 ", " 6  83  *", "3      **", "  8  2***", "  2  ****"])
+    True
+    '''
+
+    return horizontal_check(board) and vertical_check(board) and corner_check(board)
